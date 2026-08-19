@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+//JPA - ORM !!!
 @Entity
 @Table(name = "student")
 @Data

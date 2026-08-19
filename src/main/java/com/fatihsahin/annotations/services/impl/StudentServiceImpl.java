@@ -4,11 +4,12 @@ import com.fatihsahin.annotations.entities.Student;
 import com.fatihsahin.annotations.repository.StudentRepository;
 import com.fatihsahin.annotations.services.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tools.jackson.databind.ObjectMapper;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service // Bu class'ı Spring Service Bean olarak yönetir.
 public class StudentServiceImpl implements IStudentService {
@@ -35,6 +36,10 @@ public class StudentServiceImpl implements IStudentService {
         return studentRepository.findById(id).get();
     }
 
+    @Value("${student.message}") // application.properties içindeki değeri alır.
+    private String studentMessage;
+
+    @Transactional // Update işlemini transaction içinde yönetir.
     @Override
     public Student updateById(Integer id, Student student) {
 

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController // Bu class'ın REST Controller olduğunu belirtir.JSON / String / Object döndürür
+@RestController // Bu class'ın REST Controller olduğunu belirtir.JSON / String / Object döndürür. @Controller ve @ResponseBody nin birleşimidir.
 @RequestMapping("/students") // Bu controller'ın temel URL'ini belirler.
 public class StudentControllerImpl implements IStudentController {
 
