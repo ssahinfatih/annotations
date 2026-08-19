@@ -15,4 +15,7 @@ public interface IStudentController {
     Student updateById(Integer id,Student student);// Student ı id sine göre güncelle.
 
     void deleteById(Integer id);// Verilen ID'ye sahip Student'ı siler. geriye veri dönmeyeceği için void olarak tanımlıyoruz.
+
+
+    List<Student> findByFirstName(String firstName);  // firstName değerine göre Student arama işlemini tanımlar.
 }

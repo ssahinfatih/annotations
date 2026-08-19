@@ -46,4 +46,13 @@ public class StudentControllerImpl implements IStudentController {
      public  void deleteById(@PathVariable(name = "id") Integer id) {
          studentService.deleteById(id);
     }
+
+    @GetMapping("/search") // GET /students/search isteğini karşılar.
+    @Override
+    public List<Student> findByFirstName(
+            @RequestParam(name = "firstName") String firstName) { // URL'deki firstName parametresini alır.
+
+        // Gelen parametreyi Service katmanına gönderiyoruz.
+        return studentService.findByFirstName(firstName);
+    }
 }

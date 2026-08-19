@@ -20,4 +20,7 @@ public interface IStudentService {
     void deleteById(Integer id);
 
 
+    List<Student> findByFirstName(String firstName);  // firstName değerine göre Student arar.
+
+
 }

@@ -54,6 +54,12 @@ public class StudentServiceImpl implements IStudentService {
     public void deleteById(Integer id) {
       studentRepository.deleteById(id);
     }
+    @Override
+    public List<Student> findByFirstName(String firstName) {
+
+        // Repository üzerinden firstName'e göre arama yapıyoruz.
+        return studentRepository.findByFirstName(firstName);
+    }
 
 
 }
