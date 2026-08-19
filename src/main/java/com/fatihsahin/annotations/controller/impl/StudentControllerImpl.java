@@ -13,7 +13,7 @@ import java.util.List;
 public class StudentControllerImpl implements IStudentController {
 
 
-    @Autowired // Service Bean'ini Spring inject eder.
+    @Autowired // Service Bean'ini Spring inject  eder.
     private IStudentService studentService;
 
     @Override
