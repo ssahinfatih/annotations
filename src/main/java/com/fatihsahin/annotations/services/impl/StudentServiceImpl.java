@@ -50,5 +50,10 @@ public class StudentServiceImpl implements IStudentService {
         return studentRepository.save(dbStudent);
     }
 
+    @Override
+    public void deleteById(Integer id) {
+      studentRepository.deleteById(id);
+    }
+
 
 }

@@ -12,5 +12,7 @@ public interface IStudentController {
 
     Student findById(Integer id);// Student ları id ye göre getir.
 
-    Student updateById(Integer id,Student student);
+    Student updateById(Integer id,Student student);// Student ı id sine göre güncelle.
+
+    void deleteById(Integer id);// Verilen ID'ye sahip Student'ı siler. geriye veri dönmeyeceği için void olarak tanımlıyoruz.
 }
