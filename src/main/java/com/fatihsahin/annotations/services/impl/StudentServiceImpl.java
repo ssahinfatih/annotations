@@ -5,6 +5,7 @@ import com.fatihsahin.annotations.repository.StudentRepository;
 import com.fatihsahin.annotations.services.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tools.jackson.databind.ObjectMapper;
 
 @Service // Bu class'ı Spring Service Bean olarak yönetir.
 public class StudentServiceImpl implements IStudentService {
@@ -17,4 +18,6 @@ public class StudentServiceImpl implements IStudentService {
         // Student'ı database'e kaydeder.
         return studentRepository.save(student);
     }
+    @Autowired // Spring, ObjectMapper Bean'ini buraya inject eder.
+    private ObjectMapper objectMapper;
 }
