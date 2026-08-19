@@ -8,12 +8,16 @@ import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service // Bu class'ı Spring Service Bean olarak yönetir.
 public class StudentServiceImpl implements IStudentService {
 
     @Autowired // StudentRepository Bean'ini Spring inject eder.
     private StudentRepository studentRepository;
+
+    @Autowired // Spring, ObjectMapper Bean'ini buraya inject eder.
+    private ObjectMapper objectMapper;
 
     @Override
     public Student save(Student student) {
@@ -31,6 +35,20 @@ public class StudentServiceImpl implements IStudentService {
         return studentRepository.findById(id).get();
     }
 
-    @Autowired // Spring, ObjectMapper Bean'ini buraya inject eder.
-    private ObjectMapper objectMapper;
+    @Override
+    public Student updateById(Integer id, Student student) {
+
+        // Database'deki mevcut Student'ı ID ile buluyoruz.
+        Student dbStudent = studentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Student bulunamadı!"));//Optional içinde değer varsa onu al, yoksa hata fırlat demek.
+
+        // Mevcut kaydın bilgilerini güncelliyoruz.
+        dbStudent.setFirstName(student.getFirstName());
+        dbStudent.setLastName(student.getLastName());
+
+        // Güncellenmiş nesneyi database'e kaydediyoruz.
+        return studentRepository.save(dbStudent);
+    }
+
+
 }

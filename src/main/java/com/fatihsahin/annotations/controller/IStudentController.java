@@ -10,5 +10,7 @@ public interface IStudentController {
 
     List<Student> findAll();// Tüm Student ları getirir.
 
-    Student findById(Integer id);
+    Student findById(Integer id);// Student ları id ye göre getir.
+
+    Student updateById(Integer id,Student student);
 }
