@@ -1,24 +1,22 @@
 package com.fatihsahin.annotations.controller.impl;
 
 import com.fatihsahin.annotations.controller.IStudentController;
+import com.fatihsahin.annotations.entities.Student;
 import com.fatihsahin.annotations.services.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController // Bu class'ın REST Controller olduğunu belirtir.JSON / String / Object döndürür
 @RequestMapping("/students") // Bu controller'ın temel URL'ini belirler.
 public class StudentControllerImpl implements IStudentController {
 
-    @Autowired // IStudentService'in implementation'ını Spring inject eder.
+
+    @Autowired // Service Bean'ini Spring inject eder.
     private IStudentService studentService;
 
-    @Override
-    @GetMapping("/database") // GET /students/database endpoint'ini oluşturur.
-    public String getStudent() {
-
-        // Controller'dan Service katmanına geçiyoruz.
-        return studentService.getStudent();
+    @PostMapping(path = "/save") // POST /students isteğini karşılar.
+    public Student save(@RequestBody Student student) {
+        // Gelen Student nesnesini Service katmanına gönderir.
+        return studentService.save(student);
     }
 }

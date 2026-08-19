@@ -1,7 +1,8 @@
 package com.fatihsahin.annotations.controller;
 
+import com.fatihsahin.annotations.entities.Student;
+
 public interface IStudentController {
 
-    // Öğrenciyi getirir.
-    String getStudent();
+    Student save(Student student);
 }
