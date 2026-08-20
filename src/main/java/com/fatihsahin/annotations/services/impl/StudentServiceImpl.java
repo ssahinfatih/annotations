@@ -7,6 +7,7 @@ import com.fatihsahin.annotations.services.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tools.jackson.databind.ObjectMapper;
@@ -73,6 +74,7 @@ public class StudentServiceImpl implements IStudentService {
         return studentRepository.save(dbStudent);
     }
 
+    @PreAuthorize("hasRole('ADMIN')") // Sadece ADMIN rolü bu methodu çalıştırabilir.
     @Override
     public void deleteById(Integer id) {
         studentRepository.deleteById(id);
