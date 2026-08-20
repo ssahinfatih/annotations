@@ -75,8 +75,9 @@ public class StudentServiceImpl implements IStudentService {
 
     @Override
     public void deleteById(Integer id) {
-      studentRepository.deleteById(id);
+        studentRepository.deleteById(id);
     }
+
     @Override
     public List<Student> findByFirstName(String firstName) {
 

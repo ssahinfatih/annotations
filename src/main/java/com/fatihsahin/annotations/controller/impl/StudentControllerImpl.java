@@ -4,13 +4,15 @@ import com.fatihsahin.annotations.controller.IStudentController;
 import com.fatihsahin.annotations.dto.DtoStudent;
 import com.fatihsahin.annotations.entities.Student;
 import com.fatihsahin.annotations.services.IStudentService;
-import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+@CrossOrigin // Farklı originlerden gelen isteklere CORS izni verir.
+/*
+@CrossOrigin(origins = "http://localhost:3000" // Sadece bu frontend adresine izin verir.
+)*/
 @RestController
 // Bu class'ın REST Controller olduğunu belirtir.JSON / String / Object döndürür. @Controller ve @ResponseBody nin birleşimidir.
 @RequestMapping("/students") // Bu controller'ın temel URL'ini belirler.
@@ -30,6 +32,9 @@ public class StudentControllerImpl implements IStudentController {
 
     @Override
     @GetMapping("/list")
+    @CrossOrigin(
+            origins = "http://localhost:3000" // Bu endpoint için CORS izni.
+    )
     public List<Student> findAll() {
         return studentService.findAll();
     }

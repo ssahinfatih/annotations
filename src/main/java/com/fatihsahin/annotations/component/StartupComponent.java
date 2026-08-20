@@ -1,6 +1,7 @@
 package com.fatihsahin.annotations.component;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.stereotype.Component;
 
 @Component // Spring bu class'ı yönetir.
@@ -11,5 +12,9 @@ public class StartupComponent {
 
         // Uygulama başlarken çalışacak.
         System.out.println("Annotations projesi başlatıldı!");
+    }
+    @PreDestroy // Uygulama kapanırken çalışır.
+    public void destroy() {
+        System.out.println("Uygulama kapanıyor.");
     }
 }
