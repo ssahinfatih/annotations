@@ -1,14 +1,18 @@
 package com.fatihsahin.annotations.controller.impl;
 
 import com.fatihsahin.annotations.controller.IStudentController;
+import com.fatihsahin.annotations.dto.DtoStudent;
+import com.fatihsahin.annotations.dto.DtoStudentIU;
 import com.fatihsahin.annotations.entities.Student;
 import com.fatihsahin.annotations.services.IStudentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController // Bu class'ın REST Controller olduğunu belirtir.JSON / String / Object döndürür. @Controller ve @ResponseBody nin birleşimidir.
+@RestController
+// Bu class'ın REST Controller olduğunu belirtir.JSON / String / Object döndürür. @Controller ve @ResponseBody nin birleşimidir.
 @RequestMapping("/students") // Bu controller'ın temel URL'ini belirler.
 public class StudentControllerImpl implements IStudentController {
 
@@ -18,14 +22,15 @@ public class StudentControllerImpl implements IStudentController {
 
     @Override
     @PostMapping("/save") // POST /students isteğini karşılar.
-    public Student save(@RequestBody Student student) {
-        // Gelen Student nesnesini Service katmanına gönderir.
-        return studentService.save(student);
+    public DtoStudent save(@Valid @RequestBody DtoStudent dtoStudent) { // Body'yi al ve validation yap.
+
+        // Gelen ve doğrulanan DTO'yu Service katmanına gönderiyoruz.
+        return studentService.save(dtoStudent);
     }
 
     @Override
     @GetMapping("/list")
-    public List<Student>  findAll() {
+    public List<Student> findAll() {
         return studentService.findAll();
     }
 
@@ -37,14 +42,14 @@ public class StudentControllerImpl implements IStudentController {
 
     @Override
     @PutMapping("/update/{id}")
-    public Student updateById(@PathVariable(name = "id") Integer id,@RequestBody Student student) {
+    public Student updateById(@PathVariable(name = "id") Integer id, @RequestBody Student student) {
         return studentService.updateById(id, student);
     }
 
     @Override
     @DeleteMapping("/delete/{id}")
-     public  void deleteById(@PathVariable(name = "id") Integer id) {
-         studentService.deleteById(id);
+    public void deleteById(@PathVariable(name = "id") Integer id) {
+        studentService.deleteById(id);
     }
 
     @GetMapping("/search") // GET /students/search isteğini karşılar.

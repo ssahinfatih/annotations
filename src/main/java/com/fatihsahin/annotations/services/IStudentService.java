@@ -1,5 +1,7 @@
 package com.fatihsahin.annotations.services;
 
+import com.fatihsahin.annotations.dto.DtoStudent;
+import com.fatihsahin.annotations.dto.DtoStudentIU;
 import com.fatihsahin.annotations.entities.Student;
 
 import java.util.List;
@@ -7,9 +9,8 @@ import java.util.List;
 // Service katmanında hangi işlemlerin bulunacağını tanımlar.
 public interface IStudentService {
 
-
     // Student kaydetme işlemini tanımlar.
-    Student save(Student student);
+    DtoStudent save(DtoStudent dtoStudent);
     // Tüm Student ları getirir.
     List<Student> findAll();
 

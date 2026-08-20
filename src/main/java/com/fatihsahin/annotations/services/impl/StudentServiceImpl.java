@@ -1,8 +1,11 @@
 package com.fatihsahin.annotations.services.impl;
 
+import com.fatihsahin.annotations.dto.DtoStudent;
+import com.fatihsahin.annotations.dto.DtoStudentIU;
 import com.fatihsahin.annotations.entities.Student;
 import com.fatihsahin.annotations.repository.StudentRepository;
 import com.fatihsahin.annotations.services.IStudentService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -21,9 +24,24 @@ public class StudentServiceImpl implements IStudentService {
     private ObjectMapper objectMapper;
 
     @Override
-    public Student save(Student student) {
-        // Student'ı database'e kaydeder.
-        return studentRepository.save(student);
+    public DtoStudent save(DtoStudent dtoStudent) {
+        // DTO'dan Entity oluşturuyoruz.
+        Student student = new Student();
+
+        // DTO bilgilerini Entity'ye aktarıyoruz.
+        student.setFirstName(dtoStudent.getFirstName());
+        student.setLastName(dtoStudent.getLastName());
+
+        // Entity'yi database'e kaydediyoruz.
+        Student savedStudent = studentRepository.save(student);
+
+        // Burada tekrar Entity → DTO dönüşümü yapacağız.
+        DtoStudent result = new DtoStudent();
+
+        result.setFirstName(savedStudent.getFirstName());
+        result.setLastName(savedStudent.getLastName());
+
+        return result;
     }
 
     @Override

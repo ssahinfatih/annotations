@@ -1,12 +1,15 @@
 package com.fatihsahin.annotations.controller;
 
+import com.fatihsahin.annotations.dto.DtoStudent;
+import com.fatihsahin.annotations.dto.DtoStudentIU;
 import com.fatihsahin.annotations.entities.Student;
 
 import java.util.List;
 
 public interface IStudentController {
 
-    Student save(Student student);// Student kaydetme endpoint'ini tanımlar.
+    // Student kaydetme işlemini tanımlar.
+    DtoStudent save(DtoStudent dtoStudent);
 
     List<Student> findAll();// Tüm Student ları getirir.
 
