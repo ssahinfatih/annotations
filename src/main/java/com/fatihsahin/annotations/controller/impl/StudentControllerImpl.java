@@ -25,7 +25,7 @@ public class StudentControllerImpl implements IStudentController {
 
     @Override
     @GetMapping("/list")
-    public List<Student> findAll() {
+    public List<Student>  findAll() {
         return studentService.findAll();
     }
 
