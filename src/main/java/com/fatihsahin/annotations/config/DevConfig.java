@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile;
 public class DevConfig {
 
     @Bean // Spring Bean oluşturur.
-    public String environment() {
+    public String devEnvironment() {
 
         // Development ortamında olduğumuzu gösterir.
         return "Development Environment";

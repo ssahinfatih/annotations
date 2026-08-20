@@ -1,13 +1,12 @@
 package com.fatihsahin.annotations.services.impl;
 
 import com.fatihsahin.annotations.dto.DtoStudent;
-import com.fatihsahin.annotations.dto.DtoStudentIU;
 import com.fatihsahin.annotations.entities.Student;
 import com.fatihsahin.annotations.repository.StudentRepository;
 import com.fatihsahin.annotations.services.IStudentService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tools.jackson.databind.ObjectMapper;
@@ -15,6 +14,7 @@ import tools.jackson.databind.ObjectMapper;
 import java.util.List;
 
 @Service // Bu class'ı Spring Service Bean olarak yönetir.
+@Lazy // Service'in oluşturulmasını ilk ihtiyaç anına erteler.
 public class StudentServiceImpl implements IStudentService {
 
     @Autowired // StudentRepository Bean'ini Spring inject eder.

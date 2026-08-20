@@ -1,7 +1,6 @@
 package com.fatihsahin.annotations.services;
 
 import com.fatihsahin.annotations.dto.DtoStudent;
-import com.fatihsahin.annotations.dto.DtoStudentIU;
 import com.fatihsahin.annotations.entities.Student;
 
 import java.util.List;

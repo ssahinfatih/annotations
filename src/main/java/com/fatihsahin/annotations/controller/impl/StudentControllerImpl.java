@@ -2,7 +2,6 @@ package com.fatihsahin.annotations.controller.impl;
 
 import com.fatihsahin.annotations.controller.IStudentController;
 import com.fatihsahin.annotations.dto.DtoStudent;
-import com.fatihsahin.annotations.dto.DtoStudentIU;
 import com.fatihsahin.annotations.entities.Student;
 import com.fatihsahin.annotations.services.IStudentService;
 import jakarta.validation.Valid;
