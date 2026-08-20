@@ -7,6 +7,7 @@ import com.fatihsahin.annotations.services.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,6 +51,7 @@ public class StudentServiceImpl implements IStudentService {
         return studentRepository.findAll();// Database'deki tüm Student kayıtlarını getirir.
     }
 
+    @PostAuthorize("returnObject.firstName == authentication.name")// Dönen Student'ın adı, giriş yapan kullanıcıyla aynı mı kontrol eder.
     @Override
     public Student findById(Integer id) {
         return studentRepository.findById(id).get();
@@ -77,6 +79,8 @@ public class StudentServiceImpl implements IStudentService {
     @PreAuthorize("hasRole('ADMIN')") // Sadece ADMIN rolü bu methodu çalıştırabilir.
     @Override
     public void deleteById(Integer id) {
+
+        // Student'ı database'den siliyoruz.
         studentRepository.deleteById(id);
     }
 

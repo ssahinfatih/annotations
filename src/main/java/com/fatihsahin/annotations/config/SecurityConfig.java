@@ -22,6 +22,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
+                .csrf(csrf -> csrf.disable()) // REST API için CSRF kontrolünü kapatır.
                 .authorizeHttpRequests(auth -> auth
                         .anyRequest().authenticated() // Tüm endpointler giriş yapmış kullanıcıya açık.
                 )
