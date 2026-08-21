@@ -3,13 +3,22 @@ package com.fatihsahin.annotations.config;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Aspect // Bu class'ın AOP Aspect olduğunu belirtir.
 @Component // Spring'in bu class'ı Bean olarak yönetmesini sağlar.
 public class LoggingAspect {
 
-    @Around("execution(* com.fatihsahin.annotations.services.impl.StudentServiceImpl.*(..))")
+    @Pointcut(
+            "execution(* com.fatihsahin.annotations.services.impl.StudentServiceImpl.*(..))"
+    )
+    public void studentServiceMethods() {
+        // Sadece pointcut tanımı için kullanılıyor.
+    }
+
+
+    @Around("studentServiceMethods()")//methodun öncesini ve sonrasını ben kontrol ediyorum.
     public Object logServiceMethod(ProceedingJoinPoint joinPoint) throws Throwable {
 
         // Çalışacak Service methodunun adını alıyoruz.

@@ -41,13 +41,13 @@ public class StudentControllerImpl implements IStudentController {
 
     @Override
     @GetMapping("/list/{id}")
-    public Student findById(@PathVariable(name = "id") Integer id) {
+    public Student findById( @PathVariable(name = "id") Integer id) {
         return studentService.findById(id);
     }
 
     @Override
     @PutMapping("/update/{id}")
-    public Student updateById(@PathVariable(name = "id") Integer id, @RequestBody Student student) {
+    public Student updateById( @PathVariable(name = "id") Integer id, @RequestBody Student student) {
         return studentService.updateById(id, student);
     }
 
