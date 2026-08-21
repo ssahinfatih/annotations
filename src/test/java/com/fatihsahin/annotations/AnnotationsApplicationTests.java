@@ -3,10 +3,10 @@ package com.fatihsahin.annotations;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest// Spring Boot uygulamasını test için başlatır.
 class AnnotationsApplicationTests {
 
-    @Test
+    @Test // JUnit test methodu.
     void contextLoads() {
     }
 
